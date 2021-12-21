@@ -1,7 +1,8 @@
 package com.rong.rongwiki.controller;
 
-import com.rong.rongwiki.domain.Ebook;
+import com.rong.rongwiki.req.EbookReq;
 import com.rong.rongwiki.resp.CommonResp;
+import com.rong.rongwiki.resp.EbookResp;
 import com.rong.rongwiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +20,9 @@ public class EbookController {
 
 
     @GetMapping("/list")
-    public CommonResp list() {
-        CommonResp<List<Ebook>> resp = new CommonResp<>();
-        List<Ebook> list = ebookService.list();
+    public CommonResp list(EbookReq req) {
+        CommonResp<List<EbookResp>> resp = new CommonResp<>();
+        List<EbookResp> list = ebookService.list(req);
         resp.setContent(list);
         return resp;
     }
